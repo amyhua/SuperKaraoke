@@ -6,10 +6,11 @@
     var filedrag = document.getElementById('filedrag'),
         fileselect = document.getElementById('fileselect'),
         disableFilter = document.getElementById('disable-filter'),
-        options = document.getElementById('options');
+        options = document.getElementById('options'),
+        demoAudio = document.getElementById('demo-audio');
 
     // file select
-    fileselect.addEventListener("change", fileSelectHandler, false);
+    fileselect.addEventListener('change', fileSelectHandler, false);
 
     var xhr = new XMLHttpRequest();
     if (xhr.upload) {
@@ -24,7 +25,7 @@
 
     var karaokeEnabled = true;
 
-    disableFilter.addEventListener("click", function() {
+    disableFilter.addEventListener('click', function() {
       if (karaokeEnabled) {
         disableKaraoke();
         karaokeEnabled = false;
@@ -35,6 +36,26 @@
         disableFilter.innerHTML = 'Disable karaoke';
       }
     });
+
+    demoAudio.addEventListener('click', function() {
+      playSound('audio/mmo-happy.mp3')
+    }, false);
+  }
+
+  // plays a file
+  function playSound(url) {
+    var request = new XMLHttpRequest();
+
+    request.open('GET', url, true);
+    request.responseType = 'arraybuffer';
+
+    // Our asynchronous callback
+    request.onload = function() {
+      var data = request.response;
+      initAudio(data);
+    };
+
+    request.send();
   }
 
   // file drag hover
@@ -67,10 +88,10 @@
         var artist = dv.getString(30, dv.tell());
         var album = dv.getString(30, dv.tell());
         var year = dv.getString(4, dv.tell());
-        currentSong.innerHTML = "Playing " + title + " by " + artist;
+        currentSong.innerHTML = 'Playing ' + title + ' by ' + artist;
       } else {
         // no ID3v1 data found.
-        currentSong.innerHTML = "Playing";
+        currentSong.innerHTML = 'Playing';
       }
 
       options.style.display = 'block';
@@ -121,19 +142,19 @@
     filterLowPass = context.createBiquadFilter();
     source.connect(filterLowPass);
 
-    filterLowPass.type = 0;
+    filterLowPass.type = 'lowpass';
     filterLowPass.frequency.value = 120;
 
     // create high-pass filter
     filterHighPass = context.createBiquadFilter();
     source.connect(filterHighPass);
-    filterHighPass.type = 1;
+    filterHighPass.type = 'highpass';
     filterHighPass.frequency.value = 120;
 
     // create the gain node
-    mix = context.createGainNode();
+    mix = context.createGain();
 
-    mix2 = context.createGainNode();
+    mix2 = context.createGain();
     source.connect(mix2);
     mix2.connect(context.destination);
 
@@ -141,7 +162,7 @@
     mix2.gain.value = 0;
 
     // create the processor
-    processor = context.createJavaScriptNode(2048 /*bufferSize*/ , 2 /*num inputs*/ , 1 /*num outputs*/);
+    processor = context.createScriptProcessor(2048 /*bufferSize*/ , 2 /*num inputs*/ , 1 /*num outputs*/);
 
     // connect everything
     filterHighPass.connect(processor);
@@ -159,7 +180,7 @@
   }
 
   function disconnect() {
-    source.noteOff(0);
+    source.stop(0);
     source.disconnect(0);
     processor.disconnect(0);
     mix.disconnect(0);
