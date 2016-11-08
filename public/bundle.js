@@ -58,15 +58,27 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
+	var _UserProfilePage = __webpack_require__(228);
+
+	var _UserProfilePage2 = _interopRequireDefault(_UserProfilePage);
+
+	var _LoginPage = __webpack_require__(229);
+
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	console.log('app.jsx');
 
 
+	// TODO: skip sign-in for now
+
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
-	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
+	  _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/login' }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _LoginPage2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/user/:username', component: _UserProfilePage2.default })
 	), document.getElementById('app'));
 
 /***/ },
@@ -26365,6 +26377,133 @@
 	    null,
 	    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat quidem libero, voluptatem iste aperiam eum tempore laboriosam, voluptates, voluptatum porro, dicta deleniti animi accusantium debitis sunt hic inventore sequi. Accusantium.'
 	  );
+	};
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'h1',
+	    null,
+	    'User Profile Page ',
+	    props.params.username
+	  );
+	};
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// TODO: Facebook signin
+
+	var LoginPage = function (_Component) {
+	  _inherits(LoginPage, _Component);
+
+	  function LoginPage(props) {
+	    _classCallCheck(this, LoginPage);
+
+	    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+
+	    _this.onSubmit = _this.onSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(LoginPage, [{
+	    key: 'onSubmit',
+	    value: function onSubmit(e) {
+	      e.preventDefault();
+	      console.log('submitted login');
+	      // TODO: real user auth.
+	      // Just log them in with fake profile for now
+	      // redirect to user /user/amy for now
+	      this.context.router.push('/user/amy');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Login Page'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          { onSubmit: this.onSubmit },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Username '
+	            ),
+	            _react2.default.createElement('input', { type: 'text', name: 'username' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Password '
+	            ),
+	            _react2.default.createElement('input', { type: 'password', name: 'password' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LoginPage;
+	}(_react.Component);
+
+	exports.default = LoginPage;
+	;
+
+	LoginPage.contextTypes = {
+	  router: _react2.default.PropTypes.object
 	};
 
 /***/ }
