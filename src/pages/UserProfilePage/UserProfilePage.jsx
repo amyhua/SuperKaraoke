@@ -1,4 +1,15 @@
-import React from 'react';
-export default (props) => {
-  return <h1>User Profile Page {props.params.username}</h1>
+import React, { Component } from 'react';
+import cssModules from 'react-css-modules';
+import styles from './UserProfilePage.sass';
+
+class UserProfilePage extends Component {
+  render() {
+    return (
+      <div styleName="root">
+        <h1>UserProfilePage</h1>
+      </div>
+    );
+  }
 }
+
+export default cssModules(UserProfilePage, styles);
