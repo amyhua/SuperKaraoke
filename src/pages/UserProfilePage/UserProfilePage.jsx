@@ -25,7 +25,7 @@ export default (props) => {
           <img src={user.imageUrl}/>
         </div>
         <div className={s.name}>
-          {user.lastName ? `user.firstName ${user.lastName` : user.firstName}
+          {user.lastName ? `${user.firstName} ${user.lastName}` : user.firstName}
         </div>
       </div>
     </div>

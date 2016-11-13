@@ -58,7 +58,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _UserProfilePage = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./pages/UserProfilePage/UserProfilePage\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _UserProfilePage = __webpack_require__(228);
 
 	var _UserProfilePage2 = _interopRequireDefault(_UserProfilePage);
 
@@ -26386,7 +26386,83 @@
 	};
 
 /***/ },
-/* 228 */,
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactCssModules = __webpack_require__(229);
+
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+
+	var _UserProfilePage = __webpack_require__(388);
+
+	var _UserProfilePage2 = _interopRequireDefault(_UserProfilePage);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (props) {
+	  // spoof data for now
+	  var user = {
+	    firstName: 'Amy',
+	    lastName: 'Hua',
+	    imageUrl: 'https://avatars0.githubusercontent.com/u/3581705?v=3&s=460',
+	    stats: {
+	      sang: 101,
+	      status: 'Super Star'
+	    },
+	    accounts: [{
+	      provider: 'Apple Music'
+	    }, {
+	      provider: 'Spotify'
+	    }]
+	  };
+	  return _react2.default.createElement(
+	    'div',
+	    { className: _UserProfilePage2.default.root },
+	    _react2.default.createElement(
+	      'div',
+	      { className: _UserProfilePage2.default.preview },
+	      _react2.default.createElement(
+	        'div',
+	        { className: _UserProfilePage2.default.imageWrapper },
+	        _react2.default.createElement('img', { src: user.imageUrl })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: _UserProfilePage2.default.name },
+	        user.lastName ? user.firstName + ' ' + user.lastName : user.firstName
+	      )
+	    )
+	  );
+	};
+
+	// class UserProfilePage extends Component {
+	//   constructor(props) {
+	//     super(props);
+	//   }
+	//   render() {
+	//     return (
+	//       <div className={styles.root}>
+	//         <h1>UserProfilePage {this.props.params.username}</h1>
+	//       </div>
+	//     );
+	//   }
+	// }
+
+	// // note: working fix on cssModules
+	// // https://github.com/gajus/react-css-modules/issues/147
+	// export default UserProfilePage;
+
+/***/ },
 /* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31862,8 +31938,50 @@
 
 
 /***/ },
-/* 388 */,
-/* 389 */,
+/* 388 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(389);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(391)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./../../../node_modules/sass-loader/index.js!./UserProfilePage.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./../../../node_modules/sass-loader/index.js!./UserProfilePage.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 389 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(390)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".src-pages-UserProfilePage-___UserProfilePage__preview___1MxqS {\n  text-align: center;\n  padding: 25px; }\n\n.src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD {\n  max-width: 50px;\n  border-radius: 50%;\n  overflow: hidden;\n  display: inline-block; }\n  .src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD img {\n    width: 100%; }\n\n.src-pages-UserProfilePage-___UserProfilePage__name___2BTFQ {\n  padding: 10px 0;\n  color: #40214B; }\n", ""]);
+
+	// exports
+	exports.locals = {
+		"preview": "src-pages-UserProfilePage-___UserProfilePage__preview___1MxqS",
+		"imageWrapper": "src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD",
+		"name": "src-pages-UserProfilePage-___UserProfilePage__name___2BTFQ"
+	};
+
+/***/ },
 /* 390 */
 /***/ function(module, exports) {
 
