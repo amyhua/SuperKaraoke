@@ -31972,7 +31972,7 @@
 
 
 	// module
-	exports.push([module.id, ".src-pages-UserProfilePage-___UserProfilePage__preview___1MxqS {\n  text-align: center;\n  padding: 25px; }\n\n.src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD {\n  max-width: 50px;\n  border-radius: 50%;\n  overflow: hidden;\n  display: inline-block; }\n  .src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD img {\n    width: 100%; }\n\n.src-pages-UserProfilePage-___UserProfilePage__name___2BTFQ {\n  padding: 10px 0;\n  color: #40214B; }\n", ""]);
+	exports.push([module.id, ".src-pages-UserProfilePage-___UserProfilePage__preview___1MxqS {\n  text-align: center;\n  padding: 25px; }\n\n.src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD {\n  max-width: 50px;\n  border-radius: 50%;\n  overflow: hidden;\n  display: inline-block; }\n  .src-pages-UserProfilePage-___UserProfilePage__imageWrapper___1KGUD img {\n    width: 100%; }\n\n.src-pages-UserProfilePage-___UserProfilePage__name___2BTFQ {\n  padding: 10px 0;\n  color: #8b43a5;\n  font-size: 1.25em;\n  letter-spacing: 1.5px;\n  font-family: 'Shrikhand', cursive; }\n", ""]);
 
 	// exports
 	exports.locals = {
