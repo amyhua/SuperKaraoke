@@ -9,42 +9,43 @@ const sassLoaders = [
 const combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: __dirname + '/src/app.js',
   output: {
     filename: 'bundle.js',
-    path: 'public',
-    libraryTarget: 'umd'
+    path: __dirname + '/public',
+    publicPath: ''
   },
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.jsx?/,
       exclude: /node_modules/,
-      loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=latest'
-    }, {
-      // test: /\.css$/,
-      // loader: ['css', 'style', 'css-loader'],
-      test: /\.sass|\.css$/,
-      loader: ExtractTextPlugin.extract(
-        'style-loader',
-        combineLoaders([{
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
-        }])
-      )
-    }, {
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'react']
+      }
+    },
+    {
+      test: /\.scss$/,
+      loaders: [
+        'style',
+        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        'sass'
+      ]
+    },
+    {
       test: /\.svg$/,
       loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
     }]
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, "./src")]
   },
   postcss: [
     require('autoprefixer-core'),
     require('postcss-color-rebeccapurple')
   ],
   plugins: [
-    new ExtractTextPlugin('bundle-styles.css')
+    new ExtractTextPlugin('bundle.css')
   ],
   resolve: {
     extensions: ['', '.js', '.json', '.jsx'],

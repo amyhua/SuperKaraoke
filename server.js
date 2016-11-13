@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /* 
   Fallback server for supporting browserHistory
   in your React application. 
@@ -16,8 +16,8 @@ app.use( express.static(path.join(__dirname, 'public')));
 
 //send any route to index.html where the react app is mounted
 app.get('*', (req,res)=>{
-  res.sendFile(path.join(__dirname,'public/index.html'));
-})
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 app.set('port', process.env.PORT || 1337);
 

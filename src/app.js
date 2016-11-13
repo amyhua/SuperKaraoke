@@ -10,11 +10,14 @@ import LoginPage from './pages/LoginPage/LoginPage';
 
 // TODO: skip sign-in for now
 
+// TODO: authentication requird on auth routes
+// TODO: redirect from /user
 render(
   <Router history={browserHistory}>
-  <Redirect from="/" to="/login" />
-  <Route path="/login" component={LoginPage} />
-  <Route path="/user/:username" component={UserProfilePage} />
-  </Router>
+    <Route path="/">
+      <Route path="/login" component={LoginPage} />
+      <Route path="/user/:username" component={UserProfilePage} />
+      <Redirect from="/" to="/login" />
+    </Route>
+  </Router>    
 , document.getElementById('app'));
-

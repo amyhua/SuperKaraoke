@@ -1,3 +1,9 @@
 .UserProfilePage__root___13M9F {
   background: red;
+}.LoginPage__root___34q4C {
+  max-width: 500px;
+  margin: auto;
+  h1 {
+    font-size: 1.15em;
+  }
 }
